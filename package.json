@@ -1,0 +1,11 @@
+{
+  "name": "JavascriptWeb",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Nemoni/JavascriptWeb.git",
+  "author": "Nemo <490202694@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "json-server": "json-server --watch db.json"
+  }
+}

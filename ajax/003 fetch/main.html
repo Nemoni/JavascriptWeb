@@ -1,0 +1,85 @@
+<!-- ajax实验页面 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ajax实验页面</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <button id="get">get</button>
+    <button id="post">post</button>
+    <button id="put">put</button>
+    <button id="patch">patch</button>
+    <button id="delete">delete</button>
+    <script>
+        let oget = document.querySelector('#get');
+        let opost = document.querySelector('#post');
+        let oput = document.querySelector('#put');
+        let opatch = document.querySelector('#patch');
+        let odelete = document.querySelector('#delete');
+        
+        oget.onclick = function (){
+            // fetch默认是get请求，不需要额外参数
+            fetch('http://localhost:3000/users').then(res=>res.json())
+            .then(res=>{
+                console.log(res)
+            })
+        }
+        opost.onclick = function (){
+            fetch('http://localhost:3000/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name:'Bill',
+                    age:20
+                })
+            }).then(res=>res.json())
+            .then(res=>{
+                console.log(res)
+            })
+        }
+        oput.onclick = function (){
+            fetch('http://localhost:3000/users/3', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name:'Bill',
+                    age:33,
+                })
+            }).then(res=>res.json())
+            .then(res=>{
+                console.log(res)
+            })
+        }
+        opatch.onclick = function (){
+            fetch('http://localhost:3000/users/3', {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    age:2,
+                })
+            }).then(res=>res.json())
+            .then(res=>{
+                console.log(res)
+            })
+        }
+        odelete.onclick = function (){
+            fetch('http://localhost:3000/users/3', {
+                method: 'DELETE'
+            }).then(res=>res.json())
+            .then(res=>{
+                console.log(res)
+            })
+        }
+    </script>
+</body>
+
+</html>
