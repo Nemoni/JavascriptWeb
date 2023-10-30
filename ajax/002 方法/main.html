@@ -1,0 +1,105 @@
+<!-- ajax实验页面 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ajax实验页面</title>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+        function loadXMLDoc() {
+            var xmlhttp;
+            xmlhttp = new XMLHttpRequest(); // 创建 XMLHttpRequest 对象
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("myDiv").innerHTML = xmlhttp.responseText; // 获取服务器返回的数据
+                }
+            }
+            xmlhttp.open("GET", "1.json", true); // 向服务器发送请求
+            xmlhttp.send();
+        }
+    </script>
+</head>
+
+<body>
+    <button id="get">get</button>
+    <button id="post">post</button>
+    <button id="put">put</button>
+    <button id="patch">patch</button>
+    <button id="delete">delete</button>
+    <script>
+        let oget = document.querySelector('#get');
+        let opost = document.querySelector('#post');
+        let oput = document.querySelector('#put');
+        let opatch = document.querySelector('#patch');
+        let odelete = document.querySelector('#delete');
+        
+        oget.onclick = function (){
+            let xmlhttp;
+            xmlhttp = new XMLHttpRequest(); // 创建 XMLHttpRequest 对象
+            xmlhttp.onreadystatechange = function () {
+                console.log(xmlhttp.readyState,xmlhttp.status)
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    console.log(xmlhttp.responseText); // 获取服务器返回的数据
+                }
+            }
+            xmlhttp.open("GET", "http://localhost:3000/users", true); // 向服务器发送请求
+            xmlhttp.send();
+        }
+        opost.onclick = function (){
+            let xmlhttp;
+            xmlhttp = new XMLHttpRequest(); // 创建 XMLHttpRequest 对象
+            xmlhttp.onreadystatechange = function () {
+                console.log(xmlhttp.readyState,xmlhttp.status)
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    console.log(xmlhttp.responseText); // 获取服务器返回的数据
+                }
+            }
+            xmlhttp.open("POST", "http://localhost:3000/users", true); // 向服务器发送请求
+            // xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            // xmlhttp.send("name=Bill&age=20");
+            xmlhttp.setRequestHeader("Content-type","application/json");
+            xmlhttp.send(JSON.stringify({name:'Bill',age:20}));
+        }
+        oput.onclick = function (){
+            let xmlhttp;
+            xmlhttp = new XMLHttpRequest(); // 创建 XMLHttpRequest 对象
+            xmlhttp.onreadystatechange = function () {
+                console.log(xmlhttp.readyState,xmlhttp.status)
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    console.log(xmlhttp.responseText); // 获取服务器返回的数据
+                }
+            }
+            xmlhttp.open("PUT", "http://localhost:3000/users/4", true); // 向服务器发送请求
+            xmlhttp.setRequestHeader("Content-type","application/json");
+            xmlhttp.send(JSON.stringify({name:'Bill',age:21}));
+        }
+        opatch.onclick = function (){
+            let xmlhttp;
+            xmlhttp = new XMLHttpRequest(); // 创建 XMLHttpRequest 对象
+            xmlhttp.onreadystatechange = function () {
+                console.log(xmlhttp.readyState,xmlhttp.status)
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    console.log(xmlhttp.responseText); // 获取服务器返回的数据
+                }
+            }
+            xmlhttp.open("PATCH", "http://localhost:3000/users/4", true); // 向服务器发送请求
+            xmlhttp.setRequestHeader("Content-type","application/json");
+            xmlhttp.send(JSON.stringify({age:22}));
+        }
+        odelete.onclick = function (){
+            let xmlhttp;
+            xmlhttp = new XMLHttpRequest(); // 创建 XMLHttpRequest 对象
+            xmlhttp.onreadystatechange = function () {
+                console.log(xmlhttp.readyState,xmlhttp.status)
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    console.log(xmlhttp.responseText); // 获取服务器返回的数据
+                }
+            }
+            xmlhttp.open("DELETE", "http://localhost:3000/users/4", true); // 向服务器发送请求
+            xmlhttp.setRequestHeader("Content-type","application/json");
+            xmlhttp.send();
+        }
+    </script>
+</body>
+
+</html>

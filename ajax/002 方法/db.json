@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Hello World"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "users": [
+    {
+      "id": 1,
+      "name": "Leanne Graham",
+      "age": 22
+    },
+    {
+      "name": "Bill",
+      "age": "20",
+      "id": 2
+    },
+    {
+      "name": "Bill",
+      "age": 20,
+      "id": 3
+    },
+    {
+      "name": "Bill",
+      "age": 21,
+      "id": 4
+    }
+  ]
+}
