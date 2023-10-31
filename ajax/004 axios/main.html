@@ -1,0 +1,72 @@
+<!-- ajax实验页面 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ajax实验页面</title>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <button id="get">get</button>
+    <button id="post">post</button>
+    <button id="put">put</button>
+    <button id="patch">patch</button>
+    <button id="delete">delete</button>
+    <script>
+        let oget = document.querySelector('#get');
+        let opost = document.querySelector('#post');
+        let oput = document.querySelector('#put');
+        let opatch = document.querySelector('#patch');
+        let odelete = document.querySelector('#delete');
+        
+        oget.onclick = function (){
+            axios.get('http://localhost:3000/users').then(res=>{
+                console.log(res.data)
+            }).catch(err=>{
+                console.log(err)
+            })
+        }
+        opost.onclick = function (){
+            axios.post('http://localhost:3000/users', {
+                name:'Bill',
+                age:21
+            }).then(res=>{
+                console.log(res.data)
+            }).catch(err=>{
+                console.log(err)
+            })
+        }
+        oput.onclick = function (){
+            axios.put('http://localhost:3000/users/3', {
+                name:'Bill',
+                age:33
+            }).then(res=>{
+                console.log(res.data)
+            }).catch(err=>{
+                console.log(err)
+            })
+        }
+        opatch.onclick = function (){
+            axios.patch('http://localhost:3000/users/3', {
+                age:2
+            }).then(res=>{
+                console.log(res.data)
+            }).catch(err=>{
+                console.log(err)
+            })
+        }
+        odelete.onclick = function (){
+            axios.delete('http://localhost:3000/users/3', {
+                age:2
+            }).then(res=>{
+                console.log(res.data)
+            }).catch(err=>{
+                console.log(err)
+            })
+        }
+    </script>
+</body>
+
+</html>
